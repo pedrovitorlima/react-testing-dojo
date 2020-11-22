@@ -1,0 +1,13 @@
+div {
+    padding: 5px;
+}
+
+div.center {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+button {
+    width: 10em;
+}
