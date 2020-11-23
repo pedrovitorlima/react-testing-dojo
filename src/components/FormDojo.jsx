@@ -16,17 +16,25 @@ const FormDojo = () => {
     let [ overview, setOverview ] = useState();
 
     const showOverview = () => {
-        setOverview(`Name is ${name}, role is ${role} and grad is ${grad}`);
+        if (name != '') {
+            setOverview(`Name is ${name}, role is ${role} and grad is ${grad}`);
+        } else {
+            setOverview(`Name is mandatory.`);
+        }
 
         console.log(overview);
     }
 
     return(
         <Box m='auto'>
-            <TextField id='txt_name' label='Name' onChange={(e) => {setName(e.target.value)}}></TextField>
+            <TextField 
+                id='txt_name' 
+                label='Name' 
+                onChange={(e) => {setName(e.target.value)}} 
+                inputProps={{ "data-testid": "form-name" }}></TextField>
         
             <InputLabel id='role'>Role</InputLabel>
-            <Select labelId='role' onChange={(e) => {setRole(e.target.value)}}>
+            <Select labelId='role' onChange={(e) => {setRole(e.target.value)}} value='Dev' inputProps={{ "data-testid": "form-role" }}>
                 <MenuItem value='Dev'>Dev</MenuItem>
                 <MenuItem value='QA'>QA</MenuItem>
                 <MenuItem value='BA'>BA</MenuItem>
@@ -35,12 +43,15 @@ const FormDojo = () => {
             </Select>
         
             <FormLabel component="legend">Grad</FormLabel>
-            <RadioGroup aria-label="gender" name="gender1" onChange={(e) => {setGrad(e.target.value)}}>
-                <FormControlLabel value="Graduate" control={<Radio />} label="Graduate" />
-                <FormControlLabel value="Consultant" control={<Radio />} label="Consultant" />
-                <FormControlLabel value="Senior" control={<Radio />} label="Senior" />
-                <FormControlLabel value="Lead" control={<Radio />} label="Lead" />
-                <FormControlLabel value="Principal" control={<Radio />} label="Principal" />
+            <RadioGroup
+                aria-label="grad" 
+                name="grad" 
+                onChange={(e) => {setGrad(e.target.value)}}>
+                    <FormControlLabel value="Graduate" control={<Radio />} label="Graduate" />
+                    <FormControlLabel value="Consultant" control={<Radio />} label="Consultant" />
+                    <FormControlLabel value="Senior" control={<Radio />} label="Senior" />
+                    <FormControlLabel value="Lead" control={<Radio />} label="Lead" />
+                    <FormControlLabel value="Principal" control={<Radio inputProps={{ "data-testid": "form-rad-principal" }} id='radio'/>} label="Principal"/>
             </RadioGroup>
             
             <ButtonGroup color='primary'>
@@ -48,7 +59,9 @@ const FormDojo = () => {
                 <Button>Clear</Button>
             </ButtonGroup>
 
-            {overview ? <p>{overview}</p> : null}
+            <div data-testid='form-message'>
+                {overview ? <p>{overview}</p> : null}
+            </div>
         </Box>
     );
 
