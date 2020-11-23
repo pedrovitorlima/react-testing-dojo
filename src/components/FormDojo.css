@@ -1,13 +1,12 @@
-div {
-    padding: 5px;
-}
-
-div.center {
+.buttons {
     display: flex;
-    justify-content: center;
-    flex-direction: column;
+    justify-content: baseline;
 }
 
-button {
-    width: 10em;
+.buttons button {
+    margin-right: 10px;
+}
+
+.center {
+    align-items: 'center';
 }
