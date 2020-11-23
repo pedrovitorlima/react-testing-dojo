@@ -26,7 +26,7 @@ const FormDojo = () => {
     }
 
     return(
-        <Box m='auto'>
+        <div>
             <TextField 
                 id='txt_name' 
                 label='Name' 
@@ -62,7 +62,7 @@ const FormDojo = () => {
             <div data-testid='form-message'>
                 {overview ? <p>{overview}</p> : null}
             </div>
-        </Box>
+        </div>
     );
 
 };

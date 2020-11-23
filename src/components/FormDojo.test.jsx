@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import FormDojo from './FormDojo';
 
 describe('FormDojo component', () => { 
@@ -19,7 +19,7 @@ describe('FormDojo component', () => {
 
         describe('Given the user submitted the form', () => {
 
-            it('Then should print the overview message with the inputed data', () => {
+            it('Then should print the overview message with the inputed data', async () => {
                 render(<FormDojo></FormDojo>);
                 
                 const formName = screen.getByTestId('form-name');
@@ -34,7 +34,7 @@ describe('FormDojo component', () => {
                 const submitButton = screen.getByText('Submit');
                 // const leftMouseButton = { button: 1 };
                 
-                fireEvent.click(submitButton);
+                await waitFor(() => { fireEvent.click(submitButton) });
 
                 const message = screen.getByTestId('form-message').textContent;
                 const expectedMessage = 'Name is Bruce, role is QA and grad is Principal';
@@ -57,20 +57,6 @@ describe('FormDojo component', () => {
 
 
         });
-
-        // describe('Given the user submitted the form', () => {
-            
-        //     it ('When name is not provided then should show the error message', () => {
-
-        //     })
-
-        //     //...
-        // })
-
-        // describe('Given the user cleared the form', () => {
-            
-        //     it ('Then should reload the form with no content')
-        // })
 
     });
 
