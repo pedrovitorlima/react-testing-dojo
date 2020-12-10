@@ -51,7 +51,7 @@ const FormDojo = () => {
                     <FormControlLabel value="Consultant" control={<Radio />} label="Consultant" />
                     <FormControlLabel value="Senior" control={<Radio />} label="Senior" />
                     <FormControlLabel value="Lead" control={<Radio />} label="Lead" />
-                    <FormControlLabel value="Principal" control={<Radio inputProps={{ "data-testid": "form-rad-principal" }} id='radio'/>} label="Principal"/>
+                    <FormControlLabel value="Principal" control={<Radio id='radio'/>} label="Principal"/>
             </RadioGroup>
             
             <ButtonGroup color='primary'>
